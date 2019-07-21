@@ -107,7 +107,7 @@ Resources:
                 cd /smr
                 # wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.2.4/flyway-commandline-5.2.4-linux-x64.tar.gz | tar xvz && sudo ln -s /smr/flyway-5.2.4/flyway /usr/local/bin 
                 # cd /smr/flyway-5.2.4/
-                # ./flyway -url=jdbc:mysql://${rdsDatabase.Endpoint.Address}/smr_live?useSSL=false -user=cpollard -password=${mysqlPassword} migrate locations=filesystem:/smr/db/patches
+                # ./flyway -url=jdbc:mysql://${rdsDatabase.Endpoint.Address}/smr_live?useSSL=false -user=$db_username -password=$db_password migrate locations=filesystem:/smr/db/patches
                 systemctl start httpd
           # services: 
           #   systemctl: ## Not supported 
