@@ -1,0 +1,604 @@
+button, input[type=submit] {
+	cursor: pointer;
+}
+th {
+	font-size: 110%;
+	text-align: center;
+	padding: 3px;
+}
+td {
+	padding: 3px;
+	vertical-align: middle;
+}
+/* wep drop down */
+div.wep_drop1 {
+	cursor: pointer;
+	width:100%
+}
+
+/*** CS Stuff ***/
+div.secNavBox {
+	position: relative;
+}
+div.secNavBox div.scan {
+	position: relative;
+	width: 250px;
+	height: 250px;
+}
+div.secNavBox div.no_scan {
+	position: relative;
+	width: 210px;
+	height: 210px;
+	top: -20px;
+	left: -20px;
+}
+div.secNavBox div.scan_up {
+	position: absolute;
+	top: 0px;
+	left: 84px;
+}
+div.secNavBox div.move_up {
+	position: absolute;
+	top: 22px;
+	left: 84px;
+}
+div.secNavBox div.scan_left {
+	position: absolute;
+	top: 84px;
+	left: 0px;
+}
+div.secNavBox div.move_left {
+	position: absolute;
+	top: 84px;
+	left: 22px;
+}
+div.secNavBox div.cs_mid {
+	position: absolute;
+	top: 84px;
+	left: 84px;
+}
+div.secNavBox div.scan_right {
+	position: absolute;
+	top: 84px;
+	left: 208px;
+}
+div.secNavBox div.move_right {
+	position: absolute;
+	top: 84px;
+	left: 146px;
+}
+div.secNavBox div.scan_down {
+	position: absolute;
+	top: 208px;
+	left: 84px;
+}
+div.secNavBox div.move_down {
+	position: absolute;
+	top: 146px;
+	left: 84px;
+}
+div.secNavBox div.scan_warp {
+	position: absolute;
+	top: 161px;
+	left: 221px;
+}
+div.secNavBox div.move_warp {
+	position: absolute;
+	top: 161px;
+	left: 159px;
+}
+.scan_text_vert {
+	width: 20px;
+	height: 60px;
+}
+.scan_text_vert a {
+	display:block;
+	width: 20px;
+	font-size: 90%;
+	text-align: center;
+	line-height: 15px;
+}
+.scan_text_hor {
+	width: 60px;
+	height: 20px;
+}
+.scan_text_hor a {
+	display:block;
+	width: 60px;
+	font-size: 90%;
+	text-align: center;
+	line-height: 20px;
+}
+.move_text {
+	width: 60px;
+	height: 60px;
+	font-weight: bold;
+	text-align: center;
+}
+.move_text a {
+	display:block;
+	width: 60px;
+	line-height: 60px;
+	font-weight: bold;
+	text-align: center;
+}
+
+
+
+/* General */
+.attack_warning {
+	text-align: center;
+	font-weight: bold;
+	padding: 0px;
+	margin: 0px;
+}
+.admin {
+	font-variant: small-caps;
+	font-weight: bold;
+	color: blue;
+}
+.hide {
+	display: none;
+}
+.bold {
+	font-weight: bold;
+}
+.italic {
+	font-style: italic;
+}
+.underline {
+	text-decoration: underline;
+}
+.smallCaps {
+	font-variant: small-caps;
+}
+.smallFont {
+	font-size: 75%;
+}
+.inset {
+	width: 95%;
+}
+.fullwidth {
+	width: 100%;
+}
+.fullheight {
+	height: 100%;
+}
+.left {
+	text-align: left;
+}
+.right {
+	text-align: right;
+}
+.center {
+	text-align: center;
+}
+.top {
+	vertical-align: top;
+}
+.bottom {
+	vertical-align: bottom;
+}
+table.center, table.centered {
+	margin:auto;
+}
+.nopad {
+	margin: 0px;
+	padding: 0px;
+}
+.noWrap {
+	white-space: nowrap;
+}
+.auto {
+	width: auto;
+}
+.shrink {
+	width: 1%;
+}
+.newbie {
+	font-style: italic;
+}
+.clear {
+	clear: both; /* don't change clear is required to end floats */
+}
+
+/* Colours */
+.yellow {
+	color: #FF0;
+}
+.red {
+	color: #F00;
+}
+.dgreen {
+	color: #008000;
+}
+.green {
+	color: #0F0;
+}
+.lgreen {
+	color: #80C870;
+}
+.blue {
+	color:#00F;
+}
+.npcColour {
+	color: #6CF;
+}
+.sectorColour {
+}
+.creds {
+	color: #FF0;
+}
+.exp {
+	color:#06F;
+}
+.shields {
+	color: #0FF;
+}
+.cds {
+	color: #FF0;
+}
+
+/* More */
+
+
+table.standardnobord {
+	border: 0px;
+}
+.standardnobord tr,.standardnobord td,.standardnobord th {
+	border: 0px;
+}
+
+table.standard td, table.standard th {
+	padding:2px;
+}
+
+table.bar1, table.bar1 table {
+	width: 100%;
+}
+
+table.bar1 table table, table.bar1 table table td{
+	width: auto;
+	padding: 0px;
+}
+table.csl {
+	width: 27em;
+}
+
+td, th {
+	padding:3px;
+}
+
+textarea {
+	font: 100% Arial;
+	width: 30em;
+	height: 15em;
+}
+
+div.buttonA {
+	margin: 0px;
+	font-size: 100%;
+	height: 1.0em;
+	display: inline;
+}
+a.buttonA  {
+	font-size: inherit;
+	text-decoration: none;
+	height: 1.0em;
+	display: inline;
+	border: 2px solid;
+	color: #FFFFFF;
+	white-space: nowrap;
+	padding: 0 0.37em 0 0.37em;
+}
+
+/* Galaxy Map */
+div.gal_map_header {
+	padding-left: 15px;
+	position: fixed;
+	top: 0;
+	z-index: 100; /*Overlay header on galaxy map*/
+	color: white; /*Ensure text can be seen in all templates*/
+}
+div.gal_map_main {
+	margin-top: 8em; /*Space for fixed-position header relative to font size*/
+}
+
+/* Local Map */
+.currentSeclm {
+	background-image: url('../../images/currentsector.png');
+}
+div.lm_seedlist {
+	background-image:
+		repeating-linear-gradient(
+			45deg,
+			transparent,
+			transparent 8%,
+			rgba(0,0,255,0.5) 10%,
+			rgba(0,0,255,0.5) 13%
+		);
+}
+div.currentSeclm_seedlist {
+	background-image:
+		url('../../images/currentsector.png'),
+		repeating-linear-gradient(
+			45deg,
+			transparent,
+			transparent 8%,
+			rgba(0,0,255,0.5) 10%,
+			rgba(0,0,255,0.5) 13%
+		);
+}
+table.lmt {
+	border-collapse: separate;
+	border-spacing: 6px;
+}
+table.lmt td {
+	padding: 0px;
+}
+/* Connecting icons */
+div.lmUp.con, div.lmDown.con {
+	background: url('../images/link_hor.gif') no-repeat center;
+}
+div.lmLeft.con, div.lmRight.con {
+	background: url('../images/link_ver.gif') no-repeat center;
+}
+
+/* Walls */
+div.wall {
+	background: black;
+}
+/* Local map wall/connector containers */
+a.lmUp, a.lmLeft, a.lmRight, a.lmDown {
+	background: none;
+	z-index: 2;
+}
+a.lmUp:hover div, a.lmLeft:hover div, a.lmRight:hover div, a.lmDown:hover div {
+	background: blue;
+}
+.lmUp, .lmDown {
+	position: absolute;
+	left: 0px;
+	width: 120px;
+	height: 5px;
+	/* This is required for IE6, otherwise it renders as higher than 5px */
+	font-size: 0px;
+}
+.lmUp {
+	top: 0px;
+}
+.lmDown {
+	bottom: 0px;
+}
+.lmRight, .lmLeft {
+	position: absolute;
+	top: 0px;
+	height: 120px;
+	width: 5px;
+}
+.lmRight {
+	right: 0px;
+}
+.lmLeft {
+	left: 0px;
+}
+/*Local Plot/Warp Area*/
+.lm_sector div.lmp {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	height: 18px;
+	z-index: 2;
+}
+/*Local trader and forces*/
+.lm_sector div.lmtf {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	height: 18px;
+	text-align:right;
+	z-index: 2;
+}
+/*Local locations*/
+.lm_sector div.lmloc {
+	text-align: center;
+	position: absolute;
+	top: 28px;
+	left: 0px;
+	width: 120px;
+	height: 18px;
+	z-index: 2;
+}
+/*Local sector number*/
+.lm_sector div.lmsector {
+	position: absolute;
+	top: 46px;
+	left: 10px;
+	width: 100px;
+	height: 20px;
+	text-align: center;
+}
+/*Local port section*/
+.lm_sector div.lmport {
+	position: absolute;
+	top: 70px;
+	height: 40px;
+	z-index: 2;
+}
+.lm_sector div.lmport.a {
+	left: 0px;
+}
+.lm_sector div.lmport.b {
+	left: 5px;
+}
+.lm_sector {
+	position: relative;
+	width: 120px;
+	height: 120px;
+	min-width: 120px;
+	min-height: 120px;
+}
+.lm_sector .move_hack {
+	background: none;
+	height: 120px;
+	width: 120px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+}
+
+/** Chess **/
+.chessFont {
+	font-family: 'Times New Roman';
+}
+
+table.chess {
+	border-collapse: separate;
+	border-spacing: 0px;
+    white-space: nowrap;
+}
+
+.chess td {
+	font-size: 37px;
+	text-align: center;
+	border: 4px solid;
+}
+
+.chess td.whiteSquare {
+	width: 44px;
+	height: 44px;
+	color: black;
+	background-color: white;
+	border-color: white;
+}
+
+.chess td.blackSquare {
+	width: 44px;
+	height: 44px;
+	color: black;
+	background-color: #999;
+	border-color: #999;
+}
+
+.chess td.lastMove {
+	border: 4px green ridge;
+}
+
+.chess td.chessHighlight {
+	border: 4px orange ridge;
+}
+
+td.chessOutline {
+	border: none;
+	font-size: 18px;
+	width: 10px;
+	padding: 0px 3px;
+}
+
+div.chat, table#moveTable td {
+	color: black;
+	background-color: white;
+}
+
+table#moveTable td {
+	font-size: 135%;
+	padding: 1px 3px;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.savedDestinationArea {
+	width: 500px;
+	height: 300px;
+	position: relative;
+	border: 2px solid #008000;
+	border-radius: 25px;
+}
+.savedDestination {
+	padding: 1em;
+	display: inline;
+	border: 2px solid #008000;
+	position: absolute; 
+}
+
+/* List.js*/
+.sort {
+	cursor: pointer;
+}
+
+/* race colors */
+.race1 {
+	color: #FFD800;
+}
+
+.race2 {
+	color: #FF00FF;
+}
+
+.race3 {
+	color: #FF8000;
+}
+
+.race4 {
+	color: #0000FF;
+}
+
+.race5 {
+	color: #BFBFFF;
+}
+
+.race6 {
+	color: #00AA00;
+}
+
+.race7 {
+	color: #800000;
+}
+
+.race8 {
+	color: #804040;
+}
+
+.race9 {
+	color: #FF8080;
+}
+
+/* port race backgrounds */
+.port1 {
+	background-color: #FFD800;
+}
+
+.port2 {
+	background-color: #FF00FF;
+}
+
+.port3 {
+	background-color: #FF8000;
+}
+
+.port4 {
+	background-color: #0000FF;
+}
+
+.port5 {
+	background-color: #BFBFFF;
+}
+
+.port6 {
+	background-color: #00AA00;
+}
+
+.port7 {
+	background-color: #800000;
+}
+
+.port8 {
+	background-color: #804040; 
+}
+
+.port9 {
+	background-color: #FF8080;
+}

@@ -1,0 +1,207 @@
+html, body {
+	font-family: Arial, sans-serif; /* Default font stlye, you can change this */
+	font-size: 14px;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+/* ----- All Heading styles ----- */
+h1 {
+	font-size: 1.5em;
+	font-weight: bold;
+	margin: 0px;
+}
+h2 {
+	font-size: 1.5em;
+}
+h2 {
+	font-size: 1.25em;
+}
+h3 {
+	font-size: 1.15em;
+}
+/* ----- End Heading styles ----- */
+span.smrBanner {
+	font-size: 72px;
+}
+#Container {
+	width: 100%;
+	height: 100%;
+}
+.tableHeight {
+	height: 95%;
+	width: 95%;
+}
+tr.topRow {
+	height:0%;
+}
+.topleftCell {
+	font-family: 'Bookman Old Style', serif;
+	width: 20%;
+	text-align: right;
+	vertical-align: top;
+	padding: 0px;
+	margin: 0px;
+}
+.topcenterCell {
+	text-align: center;
+	vertical-align: top;
+	width: 60%;
+	padding: 0px;
+	margin: 0px;
+}
+.rightCell {
+	width: 20%;
+	text-align: left;
+	vertical-align: top;
+	padding: 0px;
+	margin: 0px;
+}
+.leftCell { /* Class for table left nav area one */
+	width: 20%;
+	text-align: right;
+	vertical-align: top;
+	padding: 0px;
+	margin: 0px;
+}
+.centerContent { /* Class for the table Main Content Area */
+	width: 60%;
+	text-align: center;
+	vertical-align: top;
+	padding: 0px;
+	margin: 0px;
+}
+/* This starts the borders for the top center Info */
+.TopInfo {
+	text-align: left;
+	padding: 10px;
+	margin: 10px 50px 10px 50px;
+}
+.name {
+	float: left;
+	width: 30%;
+	margin-left: 10px;
+	font-size: 1.25em;
+	font-weight: bold;
+}
+.topcenterOne {
+	float: left;
+	width: 30%;
+	margin-right: 10px;
+	font-size: 1em;
+	font-weight: bold;
+}
+.topcenterTwo {
+	float: left;
+	width: 30%;
+	font-size: 1em;
+	font-weight: bold;
+}
+.bar1Separator {
+	margin-top: 5px;
+}
+.bar1 {
+	text-align: center;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 5px 10px 0px 10px;
+	margin: 0px auto 0px auto;
+	width: 100%;
+}
+/* This starts the borders for the left nav area one */
+.LeftNavOne {
+	text-align: right;
+	padding: 10px;
+	margin: 5px 8px 10px 50px;
+}
+/* This starts the borders for the left nav area two */
+.LeftNavTwo {
+	text-align: right;
+	padding: 10px;
+	margin: 5px 8px 5px 50px;
+}
+/* This starts the borders for the main content area along with other rules */
+.MainContentArea {
+	min-height: 500px;
+	min-width: 400px;
+	text-align: left;
+	padding: 5px;
+	margin: 0px 0px 10px 0px;
+}
+.footer_right {
+	text-align: right;
+	font-size: xx-small;
+}
+.footer_left {
+	text-align: left;
+	font-size: xx-small;
+	width: 60%;
+	float: left;
+}
+
+/* ****************************************************
+ This starts the borders for the right info area
+ *****************************************************/
+.rightInfo {
+	font-weight: bold;
+	font-size: 1em;
+	min-height: 600px;
+	text-align: left;
+	padding: 10px;
+	margin: 10px 50px 10px 10px;
+}
+div.rightInfoShip {
+	font-weight: bold;
+}
+div.rightInfoShip a {
+	font-weight: bold;
+	font-size: 1.15em;
+}
+
+/* ****************************************************
+ End of all Borders
+ *****************************************************/
+.big {
+	font-size: 1.25em;
+}
+.wep1 {
+	white-space:normal;
+}
+.messages {
+	font-size: .6em;
+}
+a {
+	text-decoration: none;
+	padding: 0px;
+	margin: 0px;
+}
+a.leftNav {
+	text-decoration: none;
+	padding: 0px;
+	margin: 0px;
+}
+a.nav {
+	text-decoration: none;
+	padding: 0px;
+	margin: 0px;
+}
+span#ship_name  {
+	display: block;
+	word-wrap: break-word;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	white-space: pre-wrap; 
+}
+
+ul, ol {
+	margin-left: 40px;
+}
+ul li {
+	list-style: disc;
+}
+ol li {
+	list-style: decimal;
+}
