@@ -92,16 +92,16 @@ Resources:
 
                 # configure .env 
                 sed -i ''s/{{ mysql_host }}/${rdsDatabase.Endpoint.Address}/g'' /smr/.env
-                sed -i "s/${{ mysql_password }}/$db_password/g" /smr/.env
-                sed -i "s/${{ mysql_user }}/$db_username/g" /smr/.env
+                sed -i "s/{{ mysql_password }}/$db_password/g" /smr/.env
+                sed -i "s/{{ mysql_user }}/$db_username/g" /smr/.env
 
                 mv /smr/config/config.specific.sample.php /smr/config/config.specific.php
 
                 # Configure secrets
                 mv /smr/config/SmrMySqlSecrets.sample.inc /smr/config/SmrMySqlSecrets.inc
                 sed -i ''s/{{ mysql_host }}/${rdsDatabase.Endpoint.Address}/g'' /smr/config/SmrMySqlSecrets.inc
-                sed -i "s/${{ mysql_password }}/$db_password/g" /smr/config/SmrMySqlSecrets.inc
-                sed -i "s/${{ mysql_user }}/$db_username/g" /smr/config/SmrMySqlSecrets.inc
+                sed -i "s/{{ mysql_password }}/$db_password/g" /smr/config/SmrMySqlSecrets.inc
+                sed -i "s/{{ mysql_user }}/$db_username/g" /smr/config/SmrMySqlSecrets.inc
                 rm -rf /var/www/html && ln -s "/smr/htdocs" /var/www/html
 
                 cd /smr
