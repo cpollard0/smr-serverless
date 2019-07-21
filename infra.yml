@@ -76,7 +76,7 @@ Resources:
           # users: 
           #   :
           sources: 
-            /smr: "https://github.com/cpollard0/smr-serverless/tarball/FEATURE_secretsManagerDbSecret" #"https://github.com/smrealms/smr/tarball/master"
+            /smr: "https://github.com/cpollard0/smr-serverless/tarball/FEATURE_secretsManagerDbSecret" #  "https://github.com/smrealms/smr/tarball/master"
           # files: 
           #   :
           commands: 
