@@ -3,14 +3,20 @@ Parameters:
   latestAmiId:
     Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
     Default: '/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2'
-  mysqlPassword: 
-    Type: String 
-    Default: DogDogDog!
-    NoEcho: true
   vpcId: 
     Type: String 
     Default: vpc-12e16777
 Resources:
+  dbPassword:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: rdsDbSecret
+      Description: rds database admin password (randomly generated of course!)
+      GenerateSecretString:
+        SecretStringTemplate: '{"username": "cpollard"}'
+        GenerateStringKey: "password"
+        PasswordLength: 16
+        ExcludeCharacters: '"@/\' 
   rdsDatabase:
     Type: AWS::RDS::DBInstance
     Properties:  
@@ -19,9 +25,9 @@ Resources:
       DBInstanceClass: db.t3.medium
       DBName: smr_live
       Engine: MySQL
-      EngineVersion: "5.7.22"
-      MasterUserPassword: !Ref mysqlPassword
-      MasterUsername: cpollard
+      EngineVersion: "5.7.22"      
+      MasterUsername: !Sub '{{resolve:secretsmanager:${dbPassword}:SecretString:username}}' 
+      MasterUserPassword: !Sub '{{resolve:secretsmanager:${dbPassword}:SecretString:password}}'
       DBSubnetGroupName: default-vpc-12e16777
       Tags: 
         - Key: Name
@@ -76,20 +82,26 @@ Resources:
           commands: 
             configureEnv:
               command: !Sub |
-                amazon-linux-extras install php7.3  # TODO: Move to packages?
+                amazon-linux-extras install php7.3  #  amazon-linux-extras not available in packages yet
                 mv /smr/.env.sample /smr/.env
+                db_password=$(aws secretsmanager get-secret-value --region ${AWS::Region} --secret-id ${dbPassword} --query SecretString | jq --raw-output '.' | jq -r .password)
+                db_username=$(aws secretsmanager get-secret-value --region ${AWS::Region} --secret-id ${dbPassword} --query SecretString | jq --raw-output '.' | jq -r .username)
 
                 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
                 /usr/local/bin/composer install
-                sed -i ''s/smr-mysql/${rdsDatabase.Endpoint.Address}/g'' /smr/.env
-                sed -i ''s/MYSQL_ROOT_PASSWORD=smr/MYSQL_ROOT_PASSWORD=${mysqlPassword}/g'' /smr/.env
-                sed -i ''s/MYSQL_PASSWORD=smr/MYSQL_PASSWORD=${mysqlPassword}/g'' /smr/.env
-          
+
+                # configure .env 
+                sed -i ''s/{{ mysql_host }}/${rdsDatabase.Endpoint.Address}/g'' /smr/.env
+                sed -i "s/${{ mysql_password }}/$db_password/g" /smr/.env
+                sed -i "s/${{ mysql_user }}/$db_username/g" /smr/.env
+
                 mv /smr/config/config.specific.sample.php /smr/config/config.specific.php
+
+                # Configure secrets
                 mv /smr/config/SmrMySqlSecrets.sample.inc /smr/config/SmrMySqlSecrets.inc
-                sed -i ''s/smr-mysql/${rdsDatabase.Endpoint.Address}/g'' /smr/config/SmrMySqlSecrets.inc
-                sed -i "s/$password = 'smr'/$password = '${mysqlPassword}'/g" /smr/config/SmrMySqlSecrets.inc
-                # sed -i ''s/MYSQL_PASSWORD=smr/MYSQL_PASSWORD=${mysqlPassword}/g'' /smr/config/SmrMySqlSecrets.inc
+                sed -i ''s/{{ mysql_host }}/${rdsDatabase.Endpoint.Address}/g'' /smr/config/SmrMySqlSecrets.inc
+                sed -i "s/${{ mysql_password }}/$db_password/g" /smr/config/SmrMySqlSecrets.inc
+                sed -i "s/${{ mysql_user }}/$db_username/g" /smr/config/SmrMySqlSecrets.inc
                 rm -rf /var/www/html && ln -s "/smr/htdocs" /var/www/html
 
                 cd /smr
