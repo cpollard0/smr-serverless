@@ -61,7 +61,7 @@ Resources:
     Properties: 
       GroupDescription: rds security group
       VpcId: !Ref vpcId
-  WebServerInstance: 
+  WebServerInstance1: 
     Type: AWS::EC2::Instance 
     Metadata: 
       AWS::CloudFormation::Init: 
@@ -71,6 +71,7 @@ Resources:
               php: []
               httpd: []
               php-xml: []
+              jq: []
           # groups: 
           #   :
           # users: 
@@ -83,31 +84,33 @@ Resources:
             configureEnv:
               command: !Sub |
                 amazon-linux-extras install php7.3  #  amazon-linux-extras not available in packages yet
-                mv /smr/.env.sample /smr/.env
+                application_root=/smr/smr
+                mv $application_root/.env.sample $application_root/.env
                 db_password=$(aws secretsmanager get-secret-value --region ${AWS::Region} --secret-id ${dbPassword} --query SecretString | jq --raw-output '.' | jq -r .password)
                 db_username=$(aws secretsmanager get-secret-value --region ${AWS::Region} --secret-id ${dbPassword} --query SecretString | jq --raw-output '.' | jq -r .username)
-
+                db_host=${rdsDatabase.Endpoint.Address}
                 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
                 /usr/local/bin/composer install
 
                 # configure .env 
-                sed -i ''s/{{ mysql_host }}/${rdsDatabase.Endpoint.Address}/g'' /smr/.env
-                sed -i "s/{{ mysql_password }}/$db_password/g" /smr/.env
-                sed -i "s/{{ mysql_user }}/$db_username/g" /smr/.env
+                sed -i "s/{{ mysql_host }}/$db_host/g" $application_root/.env
+                sed -i "s/{{ mysql_password }}/$db_password/g" $application_root/.env
+                sed -i "s/{{ mysql_user }}/$db_username/g" $application_root/.env
 
-                mv /smr/config/config.specific.sample.php /smr/config/config.specific.php
+                mv $application_root/config/config.specific.sample.php $application_root/config/config.specific.php
 
                 # Configure secrets
-                mv /smr/config/SmrMySqlSecrets.sample.inc /smr/config/SmrMySqlSecrets.inc
-                sed -i ''s/{{ mysql_host }}/${rdsDatabase.Endpoint.Address}/g'' /smr/config/SmrMySqlSecrets.inc
-                sed -i "s/{{ mysql_password }}/$db_password/g" /smr/config/SmrMySqlSecrets.inc
-                sed -i "s/{{ mysql_user }}/$db_username/g" /smr/config/SmrMySqlSecrets.inc
-                rm -rf /var/www/html && ln -s "/smr/htdocs" /var/www/html
+                mv $application_root/config/SmrMySqlSecrets.sample.inc $application_root/config/SmrMySqlSecrets.inc
+                sed -i "s/{{ mysql_host }}/$db_host/g" $application_root/config/SmrMySqlSecrets.inc
+                sed -i "s/{{ mysql_password }}/$db_password/g" $application_root/config/SmrMySqlSecrets.inc
+                sed -i "s/{{ mysql_user }}/$db_username/g" $application_root/config/SmrMySqlSecrets.inc
 
-                cd /smr
-                # wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.2.4/flyway-commandline-5.2.4-linux-x64.tar.gz | tar xvz && sudo ln -s /smr/flyway-5.2.4/flyway /usr/local/bin 
-                # cd /smr/flyway-5.2.4/
-                # ./flyway -url=jdbc:mysql://${rdsDatabase.Endpoint.Address}/smr_live?useSSL=false -user=$db_username -password=$db_password migrate locations=filesystem:/smr/db/patches
+
+                rm -rf /var/www/html && ln -s "$application_root/htdocs" /var/www/html
+                cd $application_root
+                wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.2.4/flyway-commandline-5.2.4-linux-x64.tar.gz | tar xvz && sudo ln -s $application_root/flyway-5.2.4/flyway /usr/local/bin 
+                cd $application_root/flyway-5.2.4/
+                ./flyway -url=jdbc:mysql://$db_host/smr_live?useSSL=false -user=$db_username -password=$db_password migrate -locations=filesystem:$application_root/db/patches
                 systemctl start httpd
           # services: 
           #   systemctl: ## Not supported 
@@ -123,8 +126,8 @@ Resources:
         Fn::Sub: |
           #!/bin/bash -xe
           yum update -y aws-cfn-bootstrap
-          /opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource WebServerInstance --region ${AWS::Region}
-          /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource WebServerInstance --region ${AWS::Region}
+          /opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource WebServerInstance1 --region ${AWS::Region}
+          /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource WebServerInstance1 --region ${AWS::Region}
       NetworkInterfaces: 
         - AssociatePublicIpAddress: "true"
           DeviceIndex: "0" 
@@ -138,7 +141,7 @@ Resources:
       Name: smr-app-servers
       TargetType: instance
       Targets:
-        - Id: !Ref WebServerInstance
+        - Id: !Ref WebServerInstance1
       Port: 80
       Protocol: HTTP
       VpcId: !Ref vpcId
