@@ -17,6 +17,8 @@ const GOOGLE_ANALYTICS_ID = '';
 
 const ENABLE_NPCS_CHESS = false;
 
+const STATIC_ASSETS = 'https://s3.amazonaws.com/images.cmp.smr.cpollard.dev/';
+
 // Set to empty string if using a local mailserver.
 // Use the default value if using the provided docker-compose orchestration.
 const SMTP_HOSTNAME = 'smtp';

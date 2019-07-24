@@ -10,7 +10,7 @@ if (!$AlreadyDestroyed) {
 ?><br /><?php
 if (!$MinimalDisplay) { ?>
 	<br />
-	<img src="images/portAttack.jpg" width="480" height="330" alt="Port Attack" title="Port Attack"><br /><?php
+	<img src="<? php echo STATIC_ASSETS;?>/portAttack.jpg" width="480" height="330" alt="Port Attack" title="Port Attack"><br /><?php
 }
 if (!$AlreadyDestroyed) {
 	if (!$MinimalDisplay) { ?>

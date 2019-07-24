@@ -2,7 +2,7 @@
 if (isset($GameID)) { ?>
 	<span id="flagship"><?php
 	if ($ThisPlayer->isFlagship()) {
-		?><img title="Alliance Flagship" alt="Alliance Flagship" src="images/flagship.png" width="16" height="12" />&nbsp;<span style="color:#06F">Flagship</span><br /><?php
+		?><img title="Alliance Flagship" alt="Alliance Flagship" src="<? php echo STATIC_ASSETS;?>/flagship.png" width="16" height="12" />&nbsp;<span style="color:#06F">Flagship</span><br /><?php
 	}
 	?></span>
 	<a href="ship_list.php" target="shipList">
@@ -68,7 +68,7 @@ if (isset($GameID)) { ?>
 		}
 	} ?>
 	Empty : <?php echo $ThisShip->getEmptyHolds(); ?><br /><br />
-	<a href="<?php echo $WeaponReorderLink; ?>"><span class="bold">Weapons</span></a>&nbsp;<a href="weapon_list.php" target="_blank"><img src="images/silk/help.png" width="16" height="16" alt="Weapon List" title="Weapon List"/></a><br /><?php
+	<a href="<?php echo $WeaponReorderLink; ?>"><span class="bold">Weapons</span></a>&nbsp;<a href="weapon_list.php" target="_blank"><img src="<? php echo STATIC_ASSETS;?>/silk/help.png" width="16" height="16" alt="Weapon List" title="Weapon List"/></a><br /><?php
 	if ($ThisShip->hasWeapons()) { ?>
 		<div class="wep_drop1" id="hide-show" onclick="toggleWepD('<?php echo $ThisPlayer->getToggleWeaponHidingHREF(true); ?>');">
 			<a href="<?php echo $ThisPlayer->getToggleWeaponHidingHREF(); ?>" onclick="this.href='javascript:void(0)';">
