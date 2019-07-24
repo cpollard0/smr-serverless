@@ -1,4 +1,5 @@
 ---
+Transform: AWS::Serverless-2016-10-31
 # Parameters:
 Resources:
   sectorTable: 
@@ -29,4 +30,25 @@ Resources:
       ProvisionedThroughput: 
         ReadCapacityUnits: 2
         WriteCapacityUnits: 1
- 
+  gameHttpEndpoint:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: python3.7
+      InlineCode: |
+        import boto3
+
+        def handler(event, context):
+          return "Allll good"
+      Description: game endpoint
+      MemorySize: 256
+      Timeout: 10
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref gameTable
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /game
+            Method: ANY

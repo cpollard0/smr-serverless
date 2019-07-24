@@ -89,6 +89,7 @@ Resources:
                 db_password=$(aws secretsmanager get-secret-value --region ${AWS::Region} --secret-id ${dbPassword} --query SecretString | jq --raw-output '.' | jq -r .password)
                 db_username=$(aws secretsmanager get-secret-value --region ${AWS::Region} --secret-id ${dbPassword} --query SecretString | jq --raw-output '.' | jq -r .username)
                 db_host=${rdsDatabase.Endpoint.Address}
+                
                 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
                 /usr/local/bin/composer install
 
@@ -170,22 +171,25 @@ Resources:
      Port: 80
      Protocol: "HTTP"
 
-  # publicWebsiteBucketPolicy:
-  #   Type: AWS::S3::BucketPolicy
-  #   Properties:
-  #     PolicyDocument: 
-  #       Version: 2012-10-17
-  #       Statement:
-  #         - Sid: PublicReadForGetBucketObjects
-  #           Effect: Allow
-  #           Principal: 
-  #             AWS: "*"
-  #           Action: 's3:GetObject'
-  #           Resource: !Sub ${resumeDotDevBucket.Arn}/*
-  #     Bucket: !Ref resumeDotDevBucket
-  # resumeDotDevBucketDub:
-  #   Type: AWS::S3::Bucket
-  #   Properties:
-  #     WebsiteConfiguration:
-  #       RedirectAllRequestsTo:
-  #         HostName: !Ref resumeDotDevBucket
+  imageBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      PolicyDocument: 
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForGetBucketObjects
+            Effect: Allow
+            Principal: 
+              AWS: "*"
+            Action: 's3:GetObject'
+            Resource: !Sub ${imagesBucket.Arn}/*
+      Bucket: !Ref imagesBucket
+
+  imagesBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: images.cmp.smr.cpollard.dev
+
+Outputs:
+  bucket:
+    Value: !Ref imagesBucket 

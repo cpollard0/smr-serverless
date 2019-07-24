@@ -8,7 +8,7 @@ if ($FullForceCombatResults['Forced']) { ?>
 } ?>
 <br />
 <br />
-<img src="images/creonti_cruiser.jpg" alt="Creonti Cruiser" title="Creonti Cruiser"><br />
+<img src="<? php echo STATIC_ASSETS;?>/creonti_cruiser.jpg" alt="Creonti Cruiser" title="Creonti Cruiser"><br />
 <br />
 <?php if (!$FullForceCombatResults['Forced']) { ?>
 	<h1>Force Results</h1><br />
