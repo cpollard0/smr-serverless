@@ -89,9 +89,9 @@ class Globals {
 																'Race ID' => self::$db->getInt('race_id'),
 																'Race Name' => self::$db->getField('race_name'),
 																'Description' => self::$db->getField('race_description'),
-																'ImageLink' => 'images/race/race' . self::$db->getInt('race_id') . '.jpg',
-																'ImageHeadLink' => 'images/race/head/race' . self::$db->getInt('race_id') . '.jpg',
-																'ImageGraphLink' => 'images/race/graph/race' . self::$db->getInt('race_id') . '.gif',
+																'ImageLink' => STATIC_ASSESTS . 'images/race/race' . self::$db->getInt('race_id') . '.jpg',
+																'ImageHeadLink' => STATIC_ASSESTS . 'images/race/head/race' . self::$db->getInt('race_id') . '.jpg',
+																'ImageGraphLink' => STATIC_ASSESTS . 'images/race/graph/race' . self::$db->getInt('race_id') . '.gif',
 																);
 			}
 		}
@@ -143,7 +143,7 @@ class Globals {
 																'Max' => self::$db->getInt('max_amount'),
 																'BasePrice' => self::$db->getInt('base_price'),
 																'Class' => self::$db->getInt('good_class'),
-																'ImageLink' => 'images/port/' . self::$db->getField('good_id') . '.png',
+																'ImageLink' => STATIC_ASSESTS . 'images/port/' . self::$db->getField('good_id') . '.png',
 																'AlignRestriction' => self::$db->getInt('align_restriction')
 															);
 			}
