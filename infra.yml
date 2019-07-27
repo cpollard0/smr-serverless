@@ -91,8 +91,7 @@ Resources:
                 db_username=$(aws secretsmanager get-secret-value --region ${AWS::Region} --secret-id ${dbPassword} --query SecretString | jq --raw-output '.' | jq -r .username)
                 db_host=${rdsDatabase.Endpoint.Address}
                 
-                curl -sS https://getcomposer.org/installer 
-                php -- --install-dir=/usr/local/bin --filename=composer
+                curl -s -N https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
                 /usr/local/bin/composer install
 
                 # configure .env 
