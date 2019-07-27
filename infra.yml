@@ -61,8 +61,9 @@ Resources:
     Properties: 
       GroupDescription: rds security group
       VpcId: !Ref vpcId
-  WebServerInstance1: 
-    Type: AWS::EC2::Instance 
+
+  webServerLaunchConfig:
+    Type: AWS::AutoScaling::LaunchConfiguration  
     Metadata: 
       AWS::CloudFormation::Init: 
         config: 
@@ -90,7 +91,7 @@ Resources:
                 db_username=$(aws secretsmanager get-secret-value --region ${AWS::Region} --secret-id ${dbPassword} --query SecretString | jq --raw-output '.' | jq -r .username)
                 db_host=${rdsDatabase.Endpoint.Address}
                 
-                curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+                curl -sS https://getcomposer.org/installer | php --install-dir=/usr/local/bin --filename=composer
                 /usr/local/bin/composer install
 
                 # configure .env 
@@ -109,9 +110,9 @@ Resources:
 
                 rm -rf /var/www/html && ln -s "$application_root/htdocs" /var/www/html
                 cd $application_root
-                wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.2.4/flyway-commandline-5.2.4-linux-x64.tar.gz | tar xvz && sudo ln -s $application_root/flyway-5.2.4/flyway /usr/local/bin 
-                cd $application_root/flyway-5.2.4/
-                ./flyway -url=jdbc:mysql://$db_host/smr_live?useSSL=false -user=$db_username -password=$db_password migrate -locations=filesystem:$application_root/db/patches
+                # wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.2.4/flyway-commandline-5.2.4-linux-x64.tar.gz | tar xvz && sudo ln -s $application_root/flyway-5.2.4/flyway /usr/local/bin 
+                #  cd $application_root/flyway-5.2.4/
+                # ./flyway -url=jdbc:mysql://$db_host/smr_live?useSSL=false -user=$db_username -password=$db_password migrate -locations=filesystem:$application_root/db/patches
                 systemctl start httpd
           # services: 
           #   systemctl: ## Not supported 
@@ -127,22 +128,42 @@ Resources:
         Fn::Sub: |
           #!/bin/bash -xe
           yum update -y aws-cfn-bootstrap
-          /opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource WebServerInstance1 --region ${AWS::Region}
-          /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource WebServerInstance1 --region ${AWS::Region}
-      NetworkInterfaces: 
-        - AssociatePublicIpAddress: "true"
-          DeviceIndex: "0" 
-          SubnetId: subnet-e16cc896 # TODO: VPC
-          GroupSet: 
-            - !Ref webServerSecurityGroup
-  smrTargetGroup:
+          /opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource webServerLaunchConfig --region ${AWS::Region}
+          /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource webServerLaunchConfig --region ${AWS::Region}
+      SecurityGroups: 
+        - !Ref webServerSecurityGroup
+  asg: 
+    # UpdatePolicy: 
+    #   AutoScalingRollingUpdate: 
+    #     MinInstancesInService: "1"
+    #     MaxBatchSize: "1"
+    #     PauseTime: "PT15M"
+    #     WaitOnResourceSignals: "true"
+    #     SuspendProcesses:
+    #       - HealthCheck
+    #       - ReplaceUnhealthy
+    #       - AZRebalance
+    #       - AlarmNotification
+    #       - ScheduledActions
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties: 
+      VPCZoneIdentifier: 
+        - subnet-f4ef09df
+        - subnet-e16cc896
+      LaunchConfigurationName: !Ref webServerLaunchConfig
+      MaxSize: "1"
+      MinSize: "1"
+      TargetGroupARNs: 
+        - !Ref webServerTargetGroup
+
+
+  webServerTargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
-      HealthCheckEnabled: true
-      Name: smr-app-servers
-      TargetType: instance
-      Targets:
-        - Id: !Ref WebServerInstance1
+      HealthCheckEnabled: true 
+      # TargetType: instance
+      # Targets:
+      #   - Id: !Ref asg
       Port: 80
       Protocol: HTTP
       VpcId: !Ref vpcId
@@ -150,8 +171,7 @@ Resources:
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
     Properties:  
       # LoadBalancerAttributes: 
-      #   - LoadBalancerAttribute
-      # Name: String
+      #   - LoadBalancerAttribute 
       Scheme: internet-facing
       SecurityGroups: 
         - !Ref albSecurityGroup 
@@ -166,7 +186,7 @@ Resources:
    Properties:
      DefaultActions:
        - Type: "forward"
-         TargetGroupArn: !Ref smrTargetGroup
+         TargetGroupArn: !Ref webServerTargetGroup
      LoadBalancerArn: !Ref loadBalancer
      Port: 80
      Protocol: "HTTP"
