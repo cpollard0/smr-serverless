@@ -11,7 +11,7 @@ else if (!$MinimalDisplay) {
 ?><br /><?php
 if (!$MinimalDisplay) { ?>
 	<br />
-	<img src="<? php echo STATIC_ASSETS;?>/planetAttack.jpg" width="480" height="330" alt="Planet Attack" title="Planet Attack"><br /><?php
+	<img src="<?php echo STATIC_ASSETS;?>/planetAttack.jpg" width="480" height="330" alt="Planet Attack" title="Planet Attack"><br /><?php
 }
 if (!$AlreadyDestroyed) {
 	if (!$MinimalDisplay) { ?>

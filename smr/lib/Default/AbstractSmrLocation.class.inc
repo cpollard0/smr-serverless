@@ -97,7 +97,7 @@ class AbstractSmrLocation {
 			$this->typeID = $db->getInt('location_type_id');
 			$this->name = $db->getField('location_name');
 			$this->processor = $db->getField('location_processor');
-			$this->image = $db->getField('location_image');
+			$this->image = STATIC_ASSESTS . $db-> getField('location_image');
 		}
 		else {
 			throw new Exception('Cannot find location: ' . $locationTypeID);
