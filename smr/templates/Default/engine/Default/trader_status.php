@@ -3,7 +3,7 @@
 		<td style="width:50%" class="top">
 			<span class="yellow bold">Protection</span>
 			<a href="<?php echo WIKI_URL; ?>/game-guide/protection" target="_blank">
-				<img src="images/silk/help.png" width="16" height="16" alt="Wiki Link" title="Goto SMR Wiki: Protection"/>
+				<img src="<?php echo STATIC_ASSETS;?>/images/silk/help.png" width="16" height="16" alt="Wiki Link" title="Goto SMR Wiki: Protection"/>
 			</a>
 			<br />
 
@@ -39,7 +39,7 @@
 				<span class="yellow bold">Politics</span>
 			</a>
 			<a href="<?php echo WIKI_URL; ?>/game-guide/politics" target="_blank">
-				<img src="images/silk/help.png" width="16" height="16" alt="Wiki Link" title="Goto SMR Wiki: Politics"/>
+				<img src="<?php echo STATIC_ASSETS;?>/images/silk/help.png" width="16" height="16" alt="Wiki Link" title="Goto SMR Wiki: Politics"/>
 			</a>
 			<br />
 
@@ -60,7 +60,7 @@
 				<span class="yellow bold">Savings</span>
 			</a>
 			<a href="<?php echo WIKI_URL; ?>/game-guide/locations#banks" target="_blank">
-				<img src="images/silk/help.png" width="16" height="16" alt="Wiki Link" title="Goto SMR Wiki: Banks"/>
+				<img src="<?php echo STATIC_ASSETS;?>/images/silk/help.png" width="16" height="16" alt="Wiki Link" title="Goto SMR Wiki: Banks"/>
 			</a>
 			<br />
 			You have <span class="yellow"><?php echo number_format($ThisPlayer->getBank()); ?></span> credits in your personal account.
@@ -73,7 +73,7 @@
 				<span class="yellow bold">Bounties</span>
 			</a>
 			<a href="<?php echo WIKI_URL; ?>/game-guide/locations#headquarters" target="_blank">
-				<img src="images/silk/help.png" width="16" height="16" alt="Wiki Link" title="Goto SMR Wiki: Bounties"/>
+				<img src="<?php echo STATIC_ASSETS;?>/images/silk/help.png" width="16" height="16" alt="Wiki Link" title="Goto SMR Wiki: Bounties"/>
 			</a>
 
 			<br />You can claim <span class="yellow"><?php echo $BountiesClaimable; ?></span> bounties.
@@ -89,7 +89,7 @@
 			<br /><br />
 			<span class="yellow bold">Ship</span>
 			<a href="ship_list.php" target="_blank">
-				<img src="images/silk/help.png" width="16" height="16" alt="Wiki Link" title="Goto SMR Ship List"/>
+				<img src="<?php echo STATIC_ASSETS;?>/images/silk/help.png" width="16" height="16" alt="Wiki Link" title="Goto SMR Ship List"/>
 			</a>
 
 			<br />Name: <?php echo $ThisShip->getName(); ?>
@@ -102,7 +102,7 @@
 				<span class="yellow bold">Supported Hardware</span>
 			</a>
 			<a href="<?php echo WIKI_URL; ?>/game-guide/technologies" target="_blank">
-				<img src="images/silk/help.png" width="16" height="16" alt="Wiki Link" title="Goto SMR Wiki: Technologies"/>
+				<img src="<?php echo STATIC_ASSETS;?>/images/silk/help.png" width="16" height="16" alt="Wiki Link" title="Goto SMR Wiki: Technologies"/>
 			</a>
 			<br /><?php echo join('<br />', $Hardware); ?><br /><br />
 
@@ -110,7 +110,7 @@
 				<span class="yellow bold">Next Level</span>
 			</a>
 			<a href="<?php echo WIKI_URL; ?>/game-guide/experience-levels" target="_blank">
-				<img src="images/silk/help.png" width="16" height="16" alt="Wiki Link" title="Goto SMR Wiki: Experience Levels"/>
+				<img src="<?php echo STATIC_ASSETS;?>/images/silk/help.png" width="16" height="16" alt="Wiki Link" title="Goto SMR Wiki: Experience Levels"/>
 			</a>
 			<br />
 			<?php echo $NextLevelName . ' : ' . number_format($ThisPlayer->getNextLevelExperience()); ?> experience
