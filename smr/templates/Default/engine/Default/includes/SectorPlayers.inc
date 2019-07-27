@@ -39,7 +39,7 @@ function getPlayerOptionClass($player, $other) {
 							<td><?php
 								if ($ThisPlayer->traderMAPAlliance($Player) || !$Ship->hasActiveIllusion()) {
 									if ($Player->isFlagship() && $ThisPlayer->sameAlliance($Player)) { ?>
-										<img title="Alliance Flagship" alt="Alliance Flagship" src="<?php echo STATIC_ASSETS;?>/flagship.png" width="16" height="12" />&nbsp;<?php
+										<img title="Alliance Flagship" alt="Alliance Flagship" src="<?php echo STATIC_ASSETS;?>/images/flagship.png" width="16" height="12" />&nbsp;<?php
 									}
 									echo $Ship->getName();
 								}

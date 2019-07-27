@@ -5,7 +5,7 @@ if (SmrSession::hasGame()) { ?>
 <span id="vote_links"><?php
 	foreach ($VoteSites as $VoteSite) { ?>
 		<a href='<?php echo htmlspecialchars($VoteSite['url']); ?>' target="_blank">
-			<img class="vote_site" src="<?php echo STATIC_ASSETS;?>/game_sites/<?php echo $VoteSite['img']; ?>" alt="" width="98" height="41" />
+			<img class="vote_site" src="<?php echo STATIC_ASSETS;?>/images/game_sites/<?php echo $VoteSite['img']; ?>" alt="" width="98" height="41" />
 		</a><?php
 	} ?>
 </span>

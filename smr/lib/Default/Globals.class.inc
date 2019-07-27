@@ -143,7 +143,7 @@ class Globals {
 																'Max' => self::$db->getInt('max_amount'),
 																'BasePrice' => self::$db->getInt('base_price'),
 																'Class' => self::$db->getInt('good_class'),
-																'ImageLink' => STATIC_ASSEST . '/images/port/' . self::$db->getField('good_id') . '.png',
+																'ImageLink' => STATIC_ASSETS . '/images/port/' . self::$db->getField('good_id') . '.png',
 																'AlignRestriction' => self::$db->getInt('align_restriction')
 															);
 			}

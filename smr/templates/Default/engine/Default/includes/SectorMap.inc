@@ -67,13 +67,13 @@
 									if ($isCurrentSector && !$GalaxyMap) {
 										?><a href="<?php echo Globals::getTradeHREF(); ?>"><?php
 									} ?>
-										<img src="<?php echo STATIC_ASSETS;?>/port/buy.png" width="5" height="16" alt="Buy (<?php echo $Port->getRaceName(); ?>)" 
+										<img src="<?php echo STATIC_ASSETS;?>/images/port/buy.png" width="5" height="16" alt="Buy (<?php echo $Port->getRaceName(); ?>)" 
 											title="Buy (<?php echo $Port->getRaceName(); ?>)" class="port<?php echo $Port->getRaceID(); ?>"/><?php
 											foreach ($Port->getVisibleGoodsSold($MapPlayer) as $GoodID) {
 												$Good = Globals::getGood($GoodID); ?>
 												<img src="<?php echo $Good['ImageLink']; ?>" width="13" height="16" title="<?php echo $Good['Name'] ?>" alt="<?php echo $Good['Name']; ?>" /><?php
 											} ?><br />
-										<img src="<?php echo STATIC_ASSETS;?>/port/sell.png" width="5" height="16" alt="Sell (<?php echo $Port->getRaceName(); ?>)" 
+										<img src="<?php echo STATIC_ASSETS;?>/images/port/sell.png" width="5" height="16" alt="Sell (<?php echo $Port->getRaceName(); ?>)" 
 										title="Sell (<?php echo $Port->getRaceName(); ?>)" class="port<?php echo $Port->getRaceID(); ?>"/><?php
 											foreach ($Port->getVisibleGoodsBought($MapPlayer) as $GoodID) {
 												$Good = Globals::getGood($GoodID); ?>
@@ -86,12 +86,12 @@
 						if (($isVisited && $Sector->hasWarp()) || (!$UniGen && ($MapPlayer->isPartOfCourse($Sector) || ($MapPlayer->hasPlottedCourse() && $isCurrentSector)))) { ?>
 							<div class="lmp"><?php
 								if (!$UniGen && ($MapPlayer->isPartOfCourse($Sector) || ($MapPlayer->hasPlottedCourse() && $isCurrentSector))) {
-									?><img title="Course" alt="Course" src="<?php echo STATIC_ASSETS;?>/plot_icon.gif" width="16" height="16"/><?php
+									?><img title="Course" alt="Course" src="<?php echo STATIC_ASSETS;?>/images/plot_icon.gif" width="16" height="16"/><?php
 								}
 								if ($isVisited) {
 									if ($Sector->hasWarp()) {
 										if ($GalaxyMap) { ?><a href="<?php echo $Sector->getWarpSector()->getGalaxyMapHREF(); ?>"><?php } else if ($isCurrentSector) { ?><a href="<?php echo $Sector->getWarpSector()->getLocalMapMoveHREF(); ?>"><?php } ?>
-											<img title="Warp to #<?php echo $Sector->getWarp(); ?> (<?php echo $Sector->getWarpSector()->getGalaxyName(); ?>)" alt="Warp to #<?php echo $Sector->getWarp(); ?>" src="<?php echo STATIC_ASSETS;?>/warp.png" width="16" height="16" /><?php
+											<img title="Warp to #<?php echo $Sector->getWarp(); ?> (<?php echo $Sector->getWarpSector()->getGalaxyName(); ?>)" alt="Warp to #<?php echo $Sector->getWarp(); ?>" src="<?php echo STATIC_ASSETS;?>/images/warp.png" width="16" height="16" /><?php
 										if ($isCurrentSector || $GalaxyMap) { ?></a><?php }
 									}
 								} ?>
@@ -104,23 +104,23 @@
 							if (($CanScanSector && ($Sector->hasForces() || $Sector->hasPlayers())) || $ShowFriendlyForces || $Sector->hasFriendlyTraders($MapPlayer)) { ?>
 								<div class="lmtf"><?php
 									if ($CanScanSector && $Sector->hasEnemyTraders($MapPlayer)) {
-										?><img class="enemyBack" title="Enemy Trader" alt="Enemy Trader" src="<?php echo STATIC_ASSETS;?>/trader.png" width="13" height="16"/><?php
+										?><img class="enemyBack" title="Enemy Trader" alt="Enemy Trader" src="<?php echo STATIC_ASSETS;?>/images/trader.png" width="13" height="16"/><?php
 									}
 									if ($CanScanSector && $Sector->hasProtectedTraders($MapPlayer)) {
-										?><img class="neutralBack" title="Protected Trader" alt="Protected Trader" src="<?php echo STATIC_ASSETS;?>/trader.png" width="13" height="16"/><?php
+										?><img class="neutralBack" title="Protected Trader" alt="Protected Trader" src="<?php echo STATIC_ASSETS;?>/images/trader.png" width="13" height="16"/><?php
 									}
 									if ($Sector->hasAllianceFlagship($MapPlayer) && !$MapPlayer->isFlagship()) {
-										?><img class="friendlyBack" title="Alliance Flagship" alt="Alliance Flagship" src="<?php echo STATIC_ASSETS;?>/flagship.png" width="16" height="16" /><?php
+										?><img class="friendlyBack" title="Alliance Flagship" alt="Alliance Flagship" src="<?php echo STATIC_ASSETS;?>/images/flagship.png" width="16" height="16" /><?php
 									}
 									if ($Sector->hasFriendlyTraders($MapPlayer)) {
-										?><img class="friendlyBack" title="Friendly Trader" alt="Friendly Trader" src="<?php echo STATIC_ASSETS;?>/trader.png" width="13" height="16"/><?php
+										?><img class="friendlyBack" title="Friendly Trader" alt="Friendly Trader" src="<?php echo STATIC_ASSETS;?>/images/trader.png" width="13" height="16"/><?php
 									}
 									if ($Sector->hasForces()) {
 										if ($CanScanSector && $Sector->hasEnemyForces($MapPlayer)) {
-											?><img class="enemyBack" title="Enemy Forces" alt="Enemy Forces" src="<?php echo STATIC_ASSETS;?>/forces.png" width="13" height="16"/><?php
+											?><img class="enemyBack" title="Enemy Forces" alt="Enemy Forces" src="<?php echo STATIC_ASSETS;?>/images/forces.png" width="13" height="16"/><?php
 										}
 										if ($ShowFriendlyForces) {
-											?><img class="friendlyBack" title="Friendly Forces" alt="Friendly Forces" src="<?php echo STATIC_ASSETS;?>/forces.png" width="13" height="16"/><?php
+											?><img class="friendlyBack" title="Friendly Forces" alt="Friendly Forces" src="<?php echo STATIC_ASSETS;?>/images/forces.png" width="13" height="16"/><?php
 										}
 									} ?>
 								</div><?php
