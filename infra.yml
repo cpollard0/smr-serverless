@@ -92,6 +92,7 @@ Resources:
                 db_host=${rdsDatabase.Endpoint.Address}
                 
                 curl -s -N https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+                cd $application_root
                 /usr/local/bin/composer install
 
                 # configure .env 
