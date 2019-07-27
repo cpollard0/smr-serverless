@@ -67,13 +67,13 @@
 									if ($isCurrentSector && !$GalaxyMap) {
 										?><a href="<?php echo Globals::getTradeHREF(); ?>"><?php
 									} ?>
-										<img src="<? php echo STATIC_ASSETS;?>/port/buy.png" width="5" height="16" alt="Buy (<?php echo $Port->getRaceName(); ?>)" 
+										<img src="<?php echo STATIC_ASSETS;?>/port/buy.png" width="5" height="16" alt="Buy (<?php echo $Port->getRaceName(); ?>)" 
 											title="Buy (<?php echo $Port->getRaceName(); ?>)" class="port<?php echo $Port->getRaceID(); ?>"/><?php
 											foreach ($Port->getVisibleGoodsSold($MapPlayer) as $GoodID) {
 												$Good = Globals::getGood($GoodID); ?>
 												<img src="<?php echo $Good['ImageLink']; ?>" width="13" height="16" title="<?php echo $Good['Name'] ?>" alt="<?php echo $Good['Name']; ?>" /><?php
 											} ?><br />
-										<img src="<? php echo STATIC_ASSETS;?>/port/sell.png" width="5" height="16" alt="Sell (<?php echo $Port->getRaceName(); ?>)" 
+										<img src="<?php echo STATIC_ASSETS;?>/port/sell.png" width="5" height="16" alt="Sell (<?php echo $Port->getRaceName(); ?>)" 
 										title="Sell (<?php echo $Port->getRaceName(); ?>)" class="port<?php echo $Port->getRaceID(); ?>"/><?php
 											foreach ($Port->getVisibleGoodsBought($MapPlayer) as $GoodID) {
 												$Good = Globals::getGood($GoodID); ?>
