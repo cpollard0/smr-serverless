@@ -1134,6 +1134,23 @@ class AbstractSmrPort {
 
 		// If any fields in the `port` table have changed, update table
 		if ($this->hasChanged) {
+
+			$api = new Api();
+			$data = array (
+				'gameId' => $this->getGameID(),
+				'sectorId' => $this->getSectorID(),
+				'experience' => $this->getExperience(),
+				'shields' => $this->getShields(),
+				'armour'=> $this->getArmour(),
+				'combat_drones' => $this->getCDs(),
+				'level' => $this->getLevel(),
+				'credits' => $this->getCredits(),
+				'upgrade' => $this->getUpgrade(),
+				'reinforce_time' => $this->getReinforceTime(),
+				'attack_started' => $this->getAttackStarted(),
+				'race_id' => $this->getRaceID()
+			);
+			$result = $api->CallAPI("POST","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/sector/" . $this-> getGameID() . "/" . $this->getSectorID() . "/port, json_encode($data));
 			if ($this->isNew === false) {
 				$this->db->query('UPDATE port SET experience = ' . $this->db->escapeNumber($this->getExperience()) .
 								', shields = ' . $this->db->escapeNumber($this->getShields()) .

@@ -1,6 +1,6 @@
 {
-    "resource": "/game",
-    "path": "/game/",
+    "resource": "/sector/{gameId}/{sectorId}/port",
+    "path": "/sector/1/603/port",
     "httpMethod": "POST",
     "headers": {
         "Accept": "*/*",
@@ -13,10 +13,10 @@
         "CloudFront-Viewer-Country": "US",
         "Content-Type": "application/x-www-form-urlencoded",
         "Host": "sclzdr82rh.execute-api.us-east-1.amazonaws.com",
-        "Via": "1.1 ffa8ec5cfe61dcaaebc108ff8c867055.cloudfront.net (CloudFront)",
-        "X-Amz-Cf-Id": "kqI-Lpuc3xzfn_oRUq8xO3rjLJ1Eg-rDbA2sm5m6NPpHfwVs_z5asQ==",
-        "X-Amzn-Trace-Id": "Root=1-5d3da8eb-ffde5860849bc548cf218f9c",
-        "X-Forwarded-For": "18.234.60.209, 70.132.60.67",
+        "Via": "1.1 36ca87fe6c524bacac44b7e6a3506b9a.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "U4VT293yL8hgL-dq__ENaxHhnY7j7skn-4bRNxFg6TMz6oaLVmxdpg==",
+        "X-Amzn-Trace-Id": "Root=1-5d3dcfa3-4bc689145d07394b905424bc",
+        "X-Forwarded-For": "54.83.99.222, 70.132.60.131",
         "X-Forwarded-Port": "443",
         "X-Forwarded-Proto": "https"
     },
@@ -52,16 +52,16 @@
             "sclzdr82rh.execute-api.us-east-1.amazonaws.com"
         ],
         "Via": [
-            "1.1 ffa8ec5cfe61dcaaebc108ff8c867055.cloudfront.net (CloudFront)"
+            "1.1 36ca87fe6c524bacac44b7e6a3506b9a.cloudfront.net (CloudFront)"
         ],
         "X-Amz-Cf-Id": [
-            "kqI-Lpuc3xzfn_oRUq8xO3rjLJ1Eg-rDbA2sm5m6NPpHfwVs_z5asQ=="
+            "U4VT293yL8hgL-dq__ENaxHhnY7j7skn-4bRNxFg6TMz6oaLVmxdpg=="
         ],
         "X-Amzn-Trace-Id": [
-            "Root=1-5d3da8eb-ffde5860849bc548cf218f9c"
+            "Root=1-5d3dcfa3-4bc689145d07394b905424bc"
         ],
         "X-Forwarded-For": [
-            "18.234.60.209, 70.132.60.67"
+            "54.83.99.222, 70.132.60.131"
         ],
         "X-Forwarded-Port": [
             "443"
@@ -72,27 +72,30 @@
     },
     "queryStringParameters": "None",
     "multiValueQueryStringParameters": "None",
-    "pathParameters": "None",
+    "pathParameters": {
+        "gameId": "1",
+        "sectorId": "603"
+    },
     "stageVariables": "None",
     "requestContext": {
-        "resourceId": "303ddy",
-        "resourcePath": "/game",
+        "resourceId": "t9z6rt",
+        "resourcePath": "/sector/{gameId}/{sectorId}/port",
         "httpMethod": "POST",
-        "extendedRequestId": "didU4Gv_oAMFQJA=",
-        "requestTime": "28/Jul/2019:13:53:48 +0000",
-        "path": "/Prod/game/",
+        "extendedRequestId": "di1hiG2hoAMF55w=",
+        "requestTime": "28/Jul/2019:16:38:59 +0000",
+        "path": "/Prod/sector/1/603/port",
         "accountId": "788751432424",
         "protocol": "HTTP/1.1",
         "stage": "Prod",
         "domainPrefix": "sclzdr82rh",
-        "requestTimeEpoch": 1564322028082,
-        "requestId": "1f7b6fea-b13f-11e9-bf8b-ebe9750dd491",
+        "requestTimeEpoch": 1564331939454,
+        "requestId": "331fda91-b156-11e9-ba0e-1b8b672d7ab0",
         "identity": {
             "cognitoIdentityPoolId": "None",
             "accountId": "None",
             "cognitoIdentityId": "None",
             "caller": "None",
-            "sourceIp": "18.234.60.209",
+            "sourceIp": "54.83.99.222",
             "principalOrgId": "None",
             "accessKey": "None",
             "cognitoAuthenticationType": "None",
@@ -104,6 +107,6 @@
         "domainName": "sclzdr82rh.execute-api.us-east-1.amazonaws.com",
         "apiId": "sclzdr82rh"
     },
-    "body": "{\"gameId\":3,\"gameName\":\"test3\",\"gameDescription\":\"test3\",\"joinTime\":1564272000,\"StartTime\":1564272000,\"endTime\":1569628800,\"maxPlayers\":\"5000\",\"maxTurns\":\"450\",\"startTurnHours\":\"15\",\"type\":\"0\",\"creditsNeeded\":\"0\",\"gameSpeed\":\"1.5\",\"isEnabled\":false,\"ignoreStats\":false,\"allianceMaxPlayers\":\"25\",\"allianceMaxVets\":\"15\",\"startingCredits\":\"23100000\"}",
+    "body": "{\"gameId\":1,\"sectorId\":603,\"experience\":0,\"shields\":2073,\"armour\":2073,\"combat_drones\":942,\"level\":1,\"credits\":4500000,\"upgrade\":0,\"reinforce_time\":0,\"attack_started\":0,\"race_id\":1}",
     "isBase64Encoded": "False"
 }
