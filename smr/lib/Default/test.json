@@ -1,6 +1,6 @@
 {
-    "resource": "/sector/{gameId}/{sectorId}/port",
-    "path": "/sector/1/603/port",
+    "resource": "/sector/{gameId}/{sectorId}/port/good",
+    "path": "/sector/2/3/port/good",
     "httpMethod": "POST",
     "headers": {
         "Accept": "*/*",
@@ -13,10 +13,10 @@
         "CloudFront-Viewer-Country": "US",
         "Content-Type": "application/x-www-form-urlencoded",
         "Host": "sclzdr82rh.execute-api.us-east-1.amazonaws.com",
-        "Via": "1.1 36ca87fe6c524bacac44b7e6a3506b9a.cloudfront.net (CloudFront)",
-        "X-Amz-Cf-Id": "U4VT293yL8hgL-dq__ENaxHhnY7j7skn-4bRNxFg6TMz6oaLVmxdpg==",
-        "X-Amzn-Trace-Id": "Root=1-5d3dcfa3-4bc689145d07394b905424bc",
-        "X-Forwarded-For": "54.83.99.222, 70.132.60.131",
+        "Via": "1.1 d91484ed0f2bc08dc4c74b0ab1bda282.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "sH95dPL5c9kT5HUt7QpKOQ-EjOEadPXz7nSUGgOrOiO7_aHLFGiHDQ==",
+        "X-Amzn-Trace-Id": "Root=1-5d3dfd95-bfe482b846a4aa286f852bec",
+        "X-Forwarded-For": "54.210.13.120, 70.132.60.138",
         "X-Forwarded-Port": "443",
         "X-Forwarded-Proto": "https"
     },
@@ -52,16 +52,16 @@
             "sclzdr82rh.execute-api.us-east-1.amazonaws.com"
         ],
         "Via": [
-            "1.1 36ca87fe6c524bacac44b7e6a3506b9a.cloudfront.net (CloudFront)"
+            "1.1 d91484ed0f2bc08dc4c74b0ab1bda282.cloudfront.net (CloudFront)"
         ],
         "X-Amz-Cf-Id": [
-            "U4VT293yL8hgL-dq__ENaxHhnY7j7skn-4bRNxFg6TMz6oaLVmxdpg=="
+            "sH95dPL5c9kT5HUt7QpKOQ-EjOEadPXz7nSUGgOrOiO7_aHLFGiHDQ=="
         ],
         "X-Amzn-Trace-Id": [
-            "Root=1-5d3dcfa3-4bc689145d07394b905424bc"
+            "Root=1-5d3dfd95-bfe482b846a4aa286f852bec"
         ],
         "X-Forwarded-For": [
-            "54.83.99.222, 70.132.60.131"
+            "54.210.13.120, 70.132.60.138"
         ],
         "X-Forwarded-Port": [
             "443"
@@ -73,29 +73,29 @@
     "queryStringParameters": "None",
     "multiValueQueryStringParameters": "None",
     "pathParameters": {
-        "gameId": "1",
-        "sectorId": "603"
+        "gameId": "2",
+        "sectorId": "3"
     },
     "stageVariables": "None",
     "requestContext": {
-        "resourceId": "t9z6rt",
-        "resourcePath": "/sector/{gameId}/{sectorId}/port",
+        "resourceId": "vii8cq",
+        "resourcePath": "/sector/{gameId}/{sectorId}/port/good",
         "httpMethod": "POST",
-        "extendedRequestId": "di1hiG2hoAMF55w=",
-        "requestTime": "28/Jul/2019:16:38:59 +0000",
-        "path": "/Prod/sector/1/603/port",
+        "extendedRequestId": "djSPVETLoAMFqkQ=",
+        "requestTime": "28/Jul/2019:19:55:01 +0000",
+        "path": "/Prod/sector/2/3/port/good",
         "accountId": "788751432424",
         "protocol": "HTTP/1.1",
         "stage": "Prod",
         "domainPrefix": "sclzdr82rh",
-        "requestTimeEpoch": 1564331939454,
-        "requestId": "331fda91-b156-11e9-ba0e-1b8b672d7ab0",
+        "requestTimeEpoch": 1564343701380,
+        "requestId": "95c75505-b171-11e9-92d4-1fccffe9fac6",
         "identity": {
             "cognitoIdentityPoolId": "None",
             "accountId": "None",
             "cognitoIdentityId": "None",
             "caller": "None",
-            "sourceIp": "54.83.99.222",
+            "sourceIp": "54.210.13.120",
             "principalOrgId": "None",
             "accessKey": "None",
             "cognitoAuthenticationType": "None",
@@ -107,6 +107,6 @@
         "domainName": "sclzdr82rh.execute-api.us-east-1.amazonaws.com",
         "apiId": "sclzdr82rh"
     },
-    "body": "{\"gameId\":1,\"sectorId\":603,\"experience\":0,\"shields\":2073,\"armour\":2073,\"combat_drones\":942,\"level\":1,\"credits\":4500000,\"upgrade\":0,\"reinforce_time\":0,\"attack_started\":0,\"race_id\":1}",
+    "body": "{\"gameId\":2,\"sectorId\":3,\"goodId\":12,\"transactionType\":\"Buy\",\"amount\":4000,\"lastUpdate\":1564343701}",
     "isBase64Encoded": "False"
 }
