@@ -78,7 +78,7 @@ Resources:
           # users: 
           #   :
           sources: 
-            /smr: "https://github.com/cpollard0/smr-serverless/tarball/master" #  "https://github.com/smrealms/smr/tarball/master"
+            /smr: "https://github.com/cpollard0/smr-serverless/tarball/FEATURE_gameApi" 
           # files: 
           #   :
           commands: 
@@ -91,10 +91,10 @@ Resources:
                 db_username=$(aws secretsmanager get-secret-value --region ${AWS::Region} --secret-id ${dbPassword} --query SecretString | jq --raw-output '.' | jq -r .username)
                 db_host=${rdsDatabase.Endpoint.Address}
                  
+                cd $application_root
                 curl -sS https://getcomposer.org/installer | php
                 mv composer.phar /usr/local/bin/composer
-                ln -s /usr/local/bin/composer /usr/bin/composer
-                cd $application_root
+                # ln -s /usr/local/bin/composer /usr/bin/composer
                 /usr/local/bin/composer install
 
                 # configure .env 

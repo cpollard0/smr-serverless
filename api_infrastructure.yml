@@ -72,4 +72,3 @@ Resources:
           Properties:
             Path: /sectors
             Method: ANY
-            

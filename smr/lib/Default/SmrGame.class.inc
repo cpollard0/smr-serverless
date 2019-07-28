@@ -73,8 +73,9 @@ class SmrGame {
 
 		$this->db->query('SELECT * FROM game WHERE game_id = ' . $this->db->escapeNumber($gameID) . ' LIMIT 1');
 		$this->api = new Api();
-		$game = $this->api->json_decode(CallAPI("GET","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/game/"), TRUE); // TODO: Make restful with gameId . escapeNumber($gameID));
-
+		$game = $this->api->CallAPI("GET","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/game/"); 
+		// TODO: Make restful with gameId . escapeNumber($gameID));
+		// TODO: Add in json_decode 
 		if ($this->db->nextRecord()) {
 			$this->gameID = $this->db->getInt('game_id');
 			$this->name = $this->db->getField('game_name');
