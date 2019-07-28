@@ -141,19 +141,21 @@ class SmrSector {
 
 	public function update() {
 
-		$api = new Api();
-		$data = array (
-			'gameId' => $this->getGameID(),
-			'sectorId' => $this->getSectorID(),
-			'galaxyId' => $this->getGalaxyID(),
-			'linkUp' => $this->getLinkUp(),
-			'linkRight'=> $this->getLinkRight(),
-			'linkDown' => $this->getLinkDown(),
-			'linkLeft' => $this->getLinkLeft(),
-			'warp' => $this->getWarp()
-		);
-		$result = $api->CallAPI("POST","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/sector/", json_encode($data));
-		
+		if ($this->isNew or $this->hasChanged)
+		{
+			$api = new Api();
+			$data = array (
+				'gameId' => $this->getGameID(),
+				'sectorId' => $this->getSectorID(),
+				'galaxyId' => $this->getGalaxyID(),
+				'linkUp' => $this->getLinkUp(),
+				'linkRight'=> $this->getLinkRight(),
+				'linkDown' => $this->getLinkDown(),
+				'linkLeft' => $this->getLinkLeft(),
+				'warp' => $this->getWarp()
+			);
+			$result = $api->CallAPI("POST","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/sector/", json_encode($data));
+		}
 		if ($this->isNew) {
 			$this->db->query('INSERT INTO sector(sector_id,game_id,galaxy_id,link_up,link_down,link_left,link_right,warp)
 								values
