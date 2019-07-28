@@ -72,6 +72,8 @@ class SmrGame {
 		$this->db = new SmrMySqlDatabase();
 
 		$this->db->query('SELECT * FROM game WHERE game_id = ' . $this->db->escapeNumber($gameID) . ' LIMIT 1');
+		// $games = json_decode(CallAPI("GET","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/game/"),TRUE); // TODO: Make restful with gameId . escapeNumber($gameID));
+		// echo $games['Item']['gameDescription'];
 		if ($this->db->nextRecord()) {
 			$this->gameID = $this->db->getInt('game_id');
 			$this->name = $this->db->getField('game_name');
