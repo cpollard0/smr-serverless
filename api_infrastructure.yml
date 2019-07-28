@@ -67,8 +67,13 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: !Ref sectorTable
       Events:
-        Api1:
+        GetUpdateSector:
+          Type: Api
+          Properties:
+            Path: /sectors/{gameId}/{sectorId}
+            Method: GET, POST
+        AddSectors:
           Type: Api
           Properties:
             Path: /sectors
-            Method: ANY
+            Method: POST

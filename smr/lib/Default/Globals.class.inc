@@ -89,7 +89,7 @@ class Globals {
 																'Race ID' => self::$db->getInt('race_id'),
 																'Race Name' => self::$db->getField('race_name'),
 																'Description' => self::$db->getField('race_description'),
-																'ImageLink' => STATIC_ASSESS . '/images/race/race' . self::$db->getInt('race_id') . '.jpg',
+																'ImageLink' => STATIC_ASSETS . '/images/race/race' . self::$db->getInt('race_id') . '.jpg',
 																'ImageHeadLink' => STATIC_ASSETS . '/images/race/head/race' . self::$db->getInt('race_id') . '.jpg',
 																'ImageGraphLink' => STATIC_ASSETS . '/images/race/graph/race' . self::$db->getInt('race_id') . '.gif',
 																);
