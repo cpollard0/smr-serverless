@@ -1,0 +1,109 @@
+{
+    "resource": "/game",
+    "path": "/game/",
+    "httpMethod": "POST",
+    "headers": {
+        "Accept": "*/*",
+        "Authorization": "Basic dXNlcm5hbWU6cGFzc3dvcmQ=",
+        "CloudFront-Forwarded-Proto": "https",
+        "CloudFront-Is-Desktop-Viewer": "true",
+        "CloudFront-Is-Mobile-Viewer": "false",
+        "CloudFront-Is-SmartTV-Viewer": "false",
+        "CloudFront-Is-Tablet-Viewer": "false",
+        "CloudFront-Viewer-Country": "US",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Host": "sclzdr82rh.execute-api.us-east-1.amazonaws.com",
+        "Via": "1.1 ffa8ec5cfe61dcaaebc108ff8c867055.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "kqI-Lpuc3xzfn_oRUq8xO3rjLJ1Eg-rDbA2sm5m6NPpHfwVs_z5asQ==",
+        "X-Amzn-Trace-Id": "Root=1-5d3da8eb-ffde5860849bc548cf218f9c",
+        "X-Forwarded-For": "18.234.60.209, 70.132.60.67",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https"
+    },
+    "multiValueHeaders": {
+        "Accept": [
+            "*/*"
+        ],
+        "Authorization": [
+            "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
+        ],
+        "CloudFront-Forwarded-Proto": [
+            "https"
+        ],
+        "CloudFront-Is-Desktop-Viewer": [
+            "true"
+        ],
+        "CloudFront-Is-Mobile-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-SmartTV-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-Tablet-Viewer": [
+            "false"
+        ],
+        "CloudFront-Viewer-Country": [
+            "US"
+        ],
+        "Content-Type": [
+            "application/x-www-form-urlencoded"
+        ],
+        "Host": [
+            "sclzdr82rh.execute-api.us-east-1.amazonaws.com"
+        ],
+        "Via": [
+            "1.1 ffa8ec5cfe61dcaaebc108ff8c867055.cloudfront.net (CloudFront)"
+        ],
+        "X-Amz-Cf-Id": [
+            "kqI-Lpuc3xzfn_oRUq8xO3rjLJ1Eg-rDbA2sm5m6NPpHfwVs_z5asQ=="
+        ],
+        "X-Amzn-Trace-Id": [
+            "Root=1-5d3da8eb-ffde5860849bc548cf218f9c"
+        ],
+        "X-Forwarded-For": [
+            "18.234.60.209, 70.132.60.67"
+        ],
+        "X-Forwarded-Port": [
+            "443"
+        ],
+        "X-Forwarded-Proto": [
+            "https"
+        ]
+    },
+    "queryStringParameters": "None",
+    "multiValueQueryStringParameters": "None",
+    "pathParameters": "None",
+    "stageVariables": "None",
+    "requestContext": {
+        "resourceId": "303ddy",
+        "resourcePath": "/game",
+        "httpMethod": "POST",
+        "extendedRequestId": "didU4Gv_oAMFQJA=",
+        "requestTime": "28/Jul/2019:13:53:48 +0000",
+        "path": "/Prod/game/",
+        "accountId": "788751432424",
+        "protocol": "HTTP/1.1",
+        "stage": "Prod",
+        "domainPrefix": "sclzdr82rh",
+        "requestTimeEpoch": 1564322028082,
+        "requestId": "1f7b6fea-b13f-11e9-bf8b-ebe9750dd491",
+        "identity": {
+            "cognitoIdentityPoolId": "None",
+            "accountId": "None",
+            "cognitoIdentityId": "None",
+            "caller": "None",
+            "sourceIp": "18.234.60.209",
+            "principalOrgId": "None",
+            "accessKey": "None",
+            "cognitoAuthenticationType": "None",
+            "cognitoAuthenticationProvider": "None",
+            "userArn": "None",
+            "userAgent": "None",
+            "user": "None"
+        },
+        "domainName": "sclzdr82rh.execute-api.us-east-1.amazonaws.com",
+        "apiId": "sclzdr82rh"
+    },
+    "body": "{\"gameId\":3,\"gameName\":\"test3\",\"gameDescription\":\"test3\",\"joinTime\":1564272000,\"StartTime\":1564272000,\"endTime\":1569628800,\"maxPlayers\":\"5000\",\"maxTurns\":\"450\",\"startTurnHours\":\"15\",\"type\":\"0\",\"creditsNeeded\":\"0\",\"gameSpeed\":\"1.5\",\"isEnabled\":false,\"ignoreStats\":false,\"allianceMaxPlayers\":\"25\",\"allianceMaxVets\":\"15\",\"startingCredits\":\"23100000\"}",
+    "isBase64Encoded": "False"
+}

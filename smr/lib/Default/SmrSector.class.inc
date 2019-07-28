@@ -108,6 +108,9 @@ class SmrSector {
 		$this->gameID = (int)$gameID;
 		$this->sectorID = (int)$sectorID;
 
+		$api = new Api();
+		$result = $api->CallAPI("POST","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/sector/" . $this->gameID . "/" . $this->sectorID);
+
 		if ($sectorExists) {
 			$this->galaxyID = $db->getInt('galaxy_id');
 			$this->battles = $db->getInt('battles');

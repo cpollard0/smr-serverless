@@ -13,6 +13,7 @@ function get_game_dir() {
 		$gameDir = $storedDir;
 	} else {
 		if ($overrideGameID > 0) {
+			require_once(LIB . 'Default/Api.class.inc');
 			require_once(LIB . 'Default/SmrGame.class.inc');
 			$storedDir = SmrGame::getGame($overrideGameID)->getGameType() . '/';
 			$gameDir = $storedDir;

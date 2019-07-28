@@ -52,3 +52,24 @@ Resources:
           Properties:
             Path: /game
             Method: ANY
+  sectorEndpoint:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: python3.7
+      InlineCode: | 
+        def handler(event, context):
+          return "placeholder"
+      Description: game endpoint
+      MemorySize: 256
+      Timeout: 10
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref sectorTable
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /sectors
+            Method: ANY
+            

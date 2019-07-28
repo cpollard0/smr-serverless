@@ -72,8 +72,9 @@ class SmrGame {
 		$this->db = new SmrMySqlDatabase();
 
 		$this->db->query('SELECT * FROM game WHERE game_id = ' . $this->db->escapeNumber($gameID) . ' LIMIT 1');
-		// $games = json_decode(CallAPI("GET","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/game/"),TRUE); // TODO: Make restful with gameId . escapeNumber($gameID));
-		// echo $games['Item']['gameDescription'];
+		$this->api = new Api();
+		$game = $this->api->json_decode(CallAPI("GET","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/game/"), TRUE); // TODO: Make restful with gameId . escapeNumber($gameID));
+
 		if ($this->db->nextRecord()) {
 			$this->gameID = $this->db->getInt('game_id');
 			$this->name = $this->db->getField('game_name');
@@ -102,6 +103,29 @@ class SmrGame {
 	}
 
 	public function save() {
+		// Create and Update is the same in DynamoDB
+		$data = array (
+			'gameId' => $this->getGameID(),
+			'gameName' => $this->getName(),
+			'gameDescription' => $this->getDescription(),
+			'joinTime' => $this->getJoinTime(),
+			'StartTime' => $this->getStartTime(),
+			'endTime' => $this->getEndTime(),
+			'maxPlayers' => $this->getMaxPlayers(),
+			'maxTurns' => $this->getMaxTurns(),
+			'startTurnHours' => $this->getStartTurnHours(),
+			'type' => $this->gameTypeID,
+			'creditsNeeded' => $this->getCreditsNeeded(),
+			'gameSpeed' => $this->getGameSpeed(),
+			'isEnabled' =>  $this->isEnabled(),
+			'ignoreStats' => $this->isIgnoreStats(),
+			'allianceMaxPlayers' => $this->getAllianceMaxPlayers(),
+			'allianceMaxVets' => $this->getAllianceMaxVets(),
+			'startingCredits' => $this->getStartingCredits()
+		);
+		$api = new Api();
+		$result = $api->CallAPI("POST","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/game/",json_encode($data));
+
 		if ($this->isNew) {
 			$this->db->query('INSERT INTO game (game_id,game_name,game_description,join_time,start_time,end_time,max_players,max_turns,start_turns,game_type,credits_needed,game_speed,enabled,ignore_stats,alliance_max_players,alliance_max_vets,starting_credits)
 									VALUES

@@ -27,19 +27,19 @@
 	<body>
 		<div class="center">
 			<div class="collapsed">
-				<img src="images/login/smr_banner.png" width="769" height="132" alt=""><br />
+				<img src="<?php echo STATIC_ASSETS;?>/images/login/smr_banner.png" width="769" height="132" alt=""><br />
 
 				<!-- small header menu -->
 				<div id="small_menu">
-					<img src="images/login/bottom_left.gif" width="7" height="11" alt="">
-					<img src="images/login/bottom_center.png" width="222" height="11" alt="">
+					<img src="<?php echo STATIC_ASSETS;?>/images/login/bottom_left.gif" width="7" height="11" alt="">
+					<img src="<?php echo STATIC_ASSETS;?>/images/login/bottom_center.png" width="222" height="11" alt="">
 					<div id="small_menu_1">
 						<a href="/">(Home)</a>
 					</div>
 					<div id="small_menu_2">
 						<a href="mailto:support@smrealms.de" target="_blank">(Contact)</a>
 					</div>
-					<img src="images/login/bottom_right.png" width="540" height="11" alt="">
+					<img src="<?php echo STATIC_ASSETS;?>/images/login/bottom_right.png" width="540" height="11" alt="">
 				</div>
 
 				<!-- header menu -->
@@ -64,53 +64,53 @@
 							<table class="collapsed center">
 								<tr>
 									<td colspan="3">
-										<img src="images/login/login_top.png" width="258" height="43" alt="">
+										<img src="<?php echo STATIC_ASSETS;?>/images/login/login_top.png" width="258" height="43" alt="">
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<img src="images/login/loginPw.png" width="104" height="48" alt="Login/Password" />
+										<img src="<?php echo STATIC_ASSETS;?>/images/login/loginPw.png" width="104" height="48" alt="Login/Password" />
 									</td>
 									<td>
 										<input id="login_username" class="InputFields inputbox uncollapse" type="text" name="login"><br />
 										<input id="login_password" class="InputFields inputbox uncollapse" type="password" name="password">
 									</td>
 									<td>
-										<img src="images/login/loginPwRight.png" width="29" height="48"  alt="">
+										<img src="<?php echo STATIC_ASSETS;?>/images/login/loginPwRight.png" width="29" height="48"  alt="">
 									</td>
 								</tr>
 								<tr>
 									<td colspan="3">
-										<img src="images/login/loginPwMid.png" width="258" height="15"  alt="">
+										<img src="<?php echo STATIC_ASSETS;?>/images/login/loginPwMid.png" width="258" height="15"  alt="">
 									</td>
 								</tr>
 							</table>
 							<table class="collapsed center">
 								<tr>
 									<td>
-										<img src="images/login/regLeft.png" width="30" height="11"  alt="">
+										<img src="<?php echo STATIC_ASSETS;?>/images/login/regLeft.png" width="30" height="11"  alt="">
 										<a href="login_create.php">
-											<img src="images/login/register.png" width="83" height="11" alt="Register">
+											<img src="<?php echo STATIC_ASSETS;?>/images/login/register.png" width="83" height="11" alt="Register">
 										</a>
 										<a href="resend_password.php">
-											<img src="images/login/pw_reset.png" width="127" height="11" alt="Reset Password">
+											<img src="<?php echo STATIC_ASSETS;?>/images/login/pw_reset.png" width="127" height="11" alt="Reset Password">
 										</a>
-										<img src="images/login/regRight.png" width="18" height="11" alt="">
+										<img src="<?php echo STATIC_ASSETS;?>/images/login/regRight.png" width="18" height="11" alt="">
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<img src="images/login/loginMid.png" width="258" height="24" alt="">
+										<img src="<?php echo STATIC_ASSETS;?>/images/login/loginMid.png" width="258" height="24" alt="">
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<img src="images/login/enter_left.png" width="79" height="27" alt=""><input id="login_submit" type="image" src="images/login/enter.png" width="110" height="27" alt="Enter"><img src="images/login/enter_right.png" width="69" height="27" alt="">
+										<img src="<?php echo STATIC_ASSETS;?>/images/login/enter_left.png" width="79" height="27" alt=""><input id="login_submit" type="image" src="<?php echo STATIC_ASSETS;?>/images/login/enter.png" width="110" height="27" alt="Enter"><img src="<?php echo STATIC_ASSETS;?>/images/login/enter_right.png" width="69" height="27" alt="">
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<img src="images/login/enter_bottom.png" width="258" height="8" alt="">
+										<img src="<?php echo STATIC_ASSETS;?>/images/login/enter_bottom.png" width="258" height="8" alt="">
 									</td>
 								</tr>
 							</table>
@@ -121,10 +121,10 @@
 						<br />
 						<span>
 							<a class="btn-social" href="login_social_processing.php?type=facebook">
-								<img alt="Facebook" src="images/login/facebook.svg" width="32" height="32">
+								<img alt="Facebook" src="<?php echo STATIC_ASSETS;?>/images/login/facebook.svg" width="32" height="32">
 							</a>
 							<a class="btn-social" href="login_social_processing.php?type=twitter">
-								<img alt="Twitter" src="images/login/twitter.svg" width="32" height="32">
+								<img alt="Twitter" src="<?php echo STATIC_ASSETS;?>/images/login/twitter.svg" width="32" height="32">
 							</a>
 						</span>
 					</td>
