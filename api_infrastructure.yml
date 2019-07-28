@@ -70,7 +70,12 @@ Resources:
         GetUpdateSector:
           Type: Api
           Properties:
-            Path: /sectors/{gameId}/{sectorId}
+            Path: /sector/{gameId}/{sectorId}
+            Method: GET, POST
+        AddPortToSector:
+          Type: Api
+          Properties:
+            Path: /sector/{gameId}/{sectorId}/port
             Method: GET, POST
         AddSectors:
           Type: Api
