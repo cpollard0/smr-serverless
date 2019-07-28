@@ -534,6 +534,17 @@ class AbstractSmrPort {
 		$this->goodAmounts[$goodID] = Globals::getGood($goodID)['Max'];
 		$this->cacheIsValid = false;
 		$this->db->query('REPLACE INTO port_has_goods (game_id, sector_id, good_id, transaction_type, amount, last_update) VALUES (' . $this->db->escapeNumber($this->getGameID()) . ',' . $this->db->escapeNumber($this->getSectorID()) . ',' . $this->db->escapeNumber($goodID) . ',' . $this->db->escapeString($type) . ',' . $this->db->escapeNumber($this->getGoodAmount($goodID)) . ',' . $this->db->escapeNumber(TIME) . ')');
+		$api = new Api();
+		$data = array (
+			'gameId' => $this->getGameID(),
+			'sectorId' => $this->getSectorID(),
+			'goodId' => $goodID,
+			'transactionType' => $type,
+			'amount'=> $this->getGoodAmount($goodID),
+			'lastUpdate' => TIME
+		);
+		$result = $api->CallAPI("POST","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/sector/" . $this-> getGameID() . "/" . $this->getSectorID() . "/port/good", json_encode($data));
+		
 		$this->db->query('DELETE FROM route_cache WHERE game_id=' . $this->db->escapeNumber($this->getGameID()));
 	}
 

@@ -77,6 +77,11 @@ Resources:
           Properties:
             Path: /sector/{gameId}/{sectorId}
             Method: POST
+        UpdatePortGood:
+          Type: Api
+          Properties:
+            Path: /sector/{gameId}/{sectorId}/port/good
+            Method: POST
         AddPortToSector:
           Type: Api
           Properties:
