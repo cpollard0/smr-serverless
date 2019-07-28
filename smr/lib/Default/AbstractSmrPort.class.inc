@@ -1150,7 +1150,7 @@ class AbstractSmrPort {
 				'attack_started' => $this->getAttackStarted(),
 				'race_id' => $this->getRaceID()
 			);
-			$result = $api->CallAPI("POST","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/sector/" . $this-> getGameID() . "/" . $this->getSectorID() . "/port, json_encode($data));
+			$result = $api->CallAPI("POST","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/sector/" . $this-> getGameID() . "/" . $this->getSectorID() . "/port", json_encode($data));
 			if ($this->isNew === false) {
 				$this->db->query('UPDATE port SET experience = ' . $this->db->escapeNumber($this->getExperience()) .
 								', shields = ' . $this->db->escapeNumber($this->getShields()) .
