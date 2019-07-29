@@ -129,6 +129,14 @@ class AbstractSmrLocation {
 		}
 		$this->name = $name;
 		$this->db->query('UPDATE location_type SET location_name=' . $this->db->escapeString($this->name) . ' WHERE ' . $this->SQL . ' LIMIT 1');
+				$api = new Api();
+		$data = array (
+			'gameId' => $this->getGameID(),
+			'sectorId' => $this->getSectorID(),
+			'locationTypeId' => $location->getTypeID(),
+			'locationName' => $this->name
+		);
+		$result = $api->CallAPI("POST","sector/" . $this-> getGameID() . "/" . $this->getSectorID() . "/location", json_encode($data));
 	}
 	
 	public function hasAction() {

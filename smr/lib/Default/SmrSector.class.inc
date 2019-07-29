@@ -154,7 +154,7 @@ class SmrSector {
 				'linkLeft' => $this->getLinkLeft(),
 				'warp' => $this->getWarp()
 			);
-			$result = $api->CallAPI("POST","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/sector/", json_encode($data));
+			$result = $api->CallAPI("POST","sector/", json_encode($data));
 		}
 		if ($this->isNew) {
 			$this->db->query('INSERT INTO sector(sector_id,game_id,galaxy_id,link_up,link_down,link_left,link_right,warp)
@@ -669,8 +669,14 @@ class SmrSector {
 	}
 
 	public function addLocation(SmrLocation $location) {
-		$this->db->query('INSERT INTO location (game_id,sector_id,location_type_id)
-						values(' . $this->db->escapeNumber($this->getGameID()) . ',' . $this->db->escapeNumber($this->getSectorID()) . ',' . $this->db->escapeNumber($location->getTypeID()) . ')');
+		$api = new Api();
+		$data = array (
+			'gameId' => $this->getGameID(),
+			'sectorId' => $this->getSectorID(),
+			'locationTypeId' => $location->getTypeID()
+		);
+		$result = $api->CallAPI("POST","sector/" . $this-> getGameID() . "/" . $this->getSectorID() . "/location", json_encode($data));
+		$this->db->query('INSERT INTO location (game_id,sector_id,location_type_id) values(' . $this->db->escapeNumber($this->getGameID()) . ',' . $this->db->escapeNumber($this->getSectorID()) . ',' . $this->db->escapeNumber($location->getTypeID()) . ')');
 		SmrLocation::getSectorLocations($this->getGameID(), $this->getSectorID(), true);
 	}
 

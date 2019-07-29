@@ -543,7 +543,7 @@ class AbstractSmrPort {
 			'amount'=> $this->getGoodAmount($goodID),
 			'lastUpdate' => TIME
 		);
-		$result = $api->CallAPI("POST","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/sector/" . $this-> getGameID() . "/" . $this->getSectorID() . "/port/good", json_encode($data));
+		$result = $api->CallAPI("POST","sector/" . $this-> getGameID() . "/" . $this->getSectorID() . "/port/good", json_encode($data));
 		
 		$this->db->query('DELETE FROM route_cache WHERE game_id=' . $this->db->escapeNumber($this->getGameID()));
 	}
@@ -1161,7 +1161,7 @@ class AbstractSmrPort {
 				'attack_started' => $this->getAttackStarted(),
 				'race_id' => $this->getRaceID()
 			);
-			$result = $api->CallAPI("POST","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/sector/" . $this-> getGameID() . "/" . $this->getSectorID() . "/port", json_encode($data));
+			$result = $api->CallAPI("POST","sector/" . $this-> getGameID() . "/" . $this->getSectorID() . "/port", json_encode($data));
 			if ($this->isNew === false) {
 				$this->db->query('UPDATE port SET experience = ' . $this->db->escapeNumber($this->getExperience()) .
 								', shields = ' . $this->db->escapeNumber($this->getShields()) .

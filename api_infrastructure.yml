@@ -87,6 +87,11 @@ Resources:
           Properties:
             Path: /sector/{gameId}/{sectorId}/port
             Method: POST
+        AddLocation:
+          Type: Api
+          Properties:
+            Path: /sector/{gameId}/{sectorId}/location
+            Method: POST
         AddSectors:
           Type: Api
           Properties:

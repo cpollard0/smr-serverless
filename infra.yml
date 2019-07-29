@@ -92,7 +92,7 @@ Resources:
                 db_host=${rdsDatabase.Endpoint.Address}
                  
                 cd $application_root
-                curl -sS https://getcomposer.org/installer | php
+                curl -sS https://getcomposer.org/installer | php  # TODO: shit doesn't work :( 
                 mv composer.phar /usr/local/bin/composer
                 # ln -s /usr/local/bin/composer /usr/bin/composer
                 /usr/local/bin/composer install

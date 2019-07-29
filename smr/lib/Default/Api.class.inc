@@ -8,7 +8,7 @@ class Api {
 	public static function CallAPI($method, $url, $data = false)
     {
         $curl = curl_init();
-
+        $url = API_ENDPOINT . $url;
         switch ($method)
         {
             case "POST":

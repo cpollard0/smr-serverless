@@ -73,7 +73,7 @@ class SmrGame {
 
 		$this->db->query('SELECT * FROM game WHERE game_id = ' . $this->db->escapeNumber($gameID) . ' LIMIT 1');
 		$this->api = new Api();
-		$game = $this->api->CallAPI("GET","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/game/"); 
+		$game = $this->api->CallAPI("GET","game/"); 
 		// TODO: Make restful with gameId . escapeNumber($gameID));
 		// TODO: Add in json_decode 
 		if ($this->db->nextRecord()) {
@@ -125,7 +125,7 @@ class SmrGame {
 			'startingCredits' => $this->getStartingCredits()
 		);
 		$api = new Api();
-		$result = $api->CallAPI("POST","https://sclzdr82rh.execute-api.us-east-1.amazonaws.com/Prod/game/",json_encode($data));
+		$result = $api->CallAPI("POST","game/",json_encode($data));
 
 		if ($this->isNew) {
 			$this->db->query('INSERT INTO game (game_id,game_name,game_description,join_time,start_time,end_time,max_players,max_turns,start_turns,game_type,credits_needed,game_speed,enabled,ignore_stats,alliance_max_players,alliance_max_vets,starting_credits)
