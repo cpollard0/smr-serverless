@@ -2,44 +2,39 @@
 Transform: AWS::Serverless-2016-10-31
 # Parameters:
 Resources:
-  sectorTable: 
+  sectorTable:
     Type : AWS::DynamoDB::Table
-    Properties: 
-      AttributeDefinitions: 
+    Properties:
+      AttributeDefinitions:
         - AttributeName: "gameId"
           AttributeType: "N"
         - AttributeName: "sectorId"
-          AttributeType: "N" 
-      KeySchema: 
+          AttributeType: "N"
+      KeySchema:
         - AttributeName: "gameId"
           KeyType: "HASH"
         - AttributeName: "sectorId"
           KeyType: "RANGE"
-      ProvisionedThroughput: 
-        ReadCapacityUnits: 2
-        WriteCapacityUnits: 1
-  gameTable: 
+      BillingMode: PAY_PER_REQUEST
+  gameTable:
     Type : AWS::DynamoDB::Table
-    Properties: 
-      AttributeDefinitions: 
+    Properties:
+      AttributeDefinitions:
         - AttributeName: "gameId"
-          AttributeType: "N" 
-      KeySchema: 
+          AttributeType: "N"
+      KeySchema:
         - AttributeName: "gameId"
-          KeyType: "HASH" 
-      ProvisionedThroughput: 
-        ReadCapacityUnits: 2
-        WriteCapacityUnits: 1
+          KeyType: "HASH"
+      BillingMode: PAY_PER_REQUEST
   gameHttpEndpoint:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: index.handler
+      Environment:
+        Variables:
+          tableName: !Ref gameTable
+      Handler: generate_map.handler
       Runtime: python3.7
-      InlineCode: |
-        import boto3
-
-        def handler(event, context):
-          return "Allll good"
+      CodeUri: ./smr/api/game_api/game_endpoint.py
       Description: game endpoint
       MemorySize: 256
       Timeout: 10
@@ -51,4 +46,25 @@ Resources:
           Type: Api
           Properties:
             Path: /game
+            Method: ANY
+  generateMapEndpoint:
+    Type: AWS::Serverless::Function
+    Properties:
+      Environment:
+        Variables:
+          tableName: !Ref sectorTable
+      Handler: generate_map.handler
+      Runtime: python3.7
+      CodeUri: ./smr/api/game_api/generate_map.py
+      Description: generate map API
+      MemorySize: 256
+      Timeout: 60
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref sectorTable
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /map/generate
             Method: ANY
